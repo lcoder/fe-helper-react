@@ -1,0 +1,6 @@
+if messages && messages.success
+  .alert.alert-success.fade.show
+    button.close(type='button', data-dismiss='alert')
+      i.fa.fa-times-circle-o
+    for success in messages.success
+      div= success.msg
