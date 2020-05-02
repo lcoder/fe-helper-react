@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input, Select } from 'antd'
-import style from './file-list.module.less'
+import style from './project-files.module.less'
 
 const { Option } = Select
 

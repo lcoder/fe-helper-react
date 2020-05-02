@@ -1,6 +1,8 @@
 import React from 'react'
 import { Layout, Menu , Row , Col } from 'antd'
-import FileList from '../components/file-list'
+import FileList from '../panel/project-files'
+import MiddleContent from '../panel/middle-content'
+import AvailableComponents from '../panel/available-components'
 import style from './index.module.less'
 
 const { Header, Content, Footer } = Layout;
@@ -23,10 +25,10 @@ export default () => {
                     <FileList />
                 </Col>
                 <Col className={ style.middleArea }>
-                    1
+                    <MiddleContent />
                 </Col>
                 <Col>
-                    1
+                    <AvailableComponents />
                 </Col>
             </Row>
         </Content>
