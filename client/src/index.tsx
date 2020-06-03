@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'mobx-react/batchingForReactDom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
 // React.StrictMode
 
 ReactDOM.render(
-  <App />,
+  <App /> ,
   document.getElementById('root')
 );
 

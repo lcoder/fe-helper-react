@@ -1,4 +1,4 @@
-const { override, fixBabelImports } = require('customize-cra');
+const { override, fixBabelImports, useBabelRc } = require('customize-cra');
 const { addLessLoader } = require( './add-less-loader' )
 
 module.exports = override(
@@ -11,4 +11,5 @@ module.exports = override(
       javascriptEnabled: true,
       // modifyVars: { '@primary-color': '#f00' },
     }),
+    useBabelRc(),
 );
