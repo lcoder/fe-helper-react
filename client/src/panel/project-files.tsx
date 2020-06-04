@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Input, Select } from "antd";
 import style from "./project-files.module.less";
 import { StoreContext } from "../store/index";
-import { useObserver } from "mobx-react";
 
 const { Option } = Select;
 
@@ -16,11 +15,11 @@ export default () => {
         className={style.projectName}
         placeholder="请选择项目"
         value={activeProject}
-        onChange={(active) => {
+        onChange={active => {
           store.changeActiveProject(active);
         }}
       >
-        {projects.map((item) => {
+        {projects.map(item => {
           return (
             <Option value={item.code} key={item.code}>
               {item.name}
