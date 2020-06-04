@@ -1,38 +1,43 @@
-import React, { createContext, Context } from 'react';
-import { useLocalStore, observer } from 'mobx-react';
+import React, { createContext, Context } from "react";
+import { useLocalStore, observer } from "mobx-react";
+import { SelectValue } from "antd/es/select";
 
 interface Project {
-    name: string,
-    code: string,
+  name: string;
+  code: string;
 }
 
 export interface StoreTypes {
-    count: number,
-    projects: Array<Project>,
+  activeProject?: SelectValue;
+  projects: Array<Project>;
+  changeActiveProject: (project: SelectValue) => void;
 }
 
 const initValues: StoreTypes = {
-    count: 0,
-    projects: [],
-}
+  activeProject: undefined,
+  projects: [],
+  changeActiveProject: () => {},
+};
 
-export const StoreContext: Context<StoreTypes> = createContext( initValues );
+export const StoreContext: Context<StoreTypes> = createContext(initValues);
 
-export const StoreProvider = observer( (props: any) => {
-    const store = useLocalStore( () => ({
-        count: 1,
+export const StoreProvider = observer((props: any) => {
+  const store = useLocalStore(
+    () =>
+      ({
+        activeProject: undefined,
         projects: [
-            { name: '夸父', code: 'kuafu' },
-            { name: '诺亚', code: 'noah' },
+          { name: "夸父", code: "kuafu" },
+          { name: "诺亚", code: "noah" },
         ],
-        get getCount(){
-            return store.count;
+        changeActiveProject(project: SelectValue) {
+          store.activeProject = project;
         },
-        handleCount(){
-            store.count++;
-        }
-    }) );
-    return <StoreContext.Provider value={store}>
-        {props.children}
+      } as StoreTypes)
+  );
+  return (
+    <StoreContext.Provider value={store}>
+      {props.children}
     </StoreContext.Provider>
+  );
 });
