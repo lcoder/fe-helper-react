@@ -1,5 +1,5 @@
 import React, { createContext, Context } from "react";
-import { useLocalStore, observer } from "mobx-react";
+import { useLocalStore, useObserver } from "mobx-react";
 import { SelectValue } from "antd/es/select";
 
 interface Project {
@@ -21,7 +21,7 @@ const initValues: StoreTypes = {
 
 export const StoreContext: Context<StoreTypes> = createContext(initValues);
 
-export const StoreProvider = observer((props: any) => {
+export const StoreProvider = (props: any) => {
   const store = useLocalStore(
     () =>
       ({
@@ -35,9 +35,7 @@ export const StoreProvider = observer((props: any) => {
         },
       } as StoreTypes)
   );
-  return (
-    <StoreContext.Provider value={store}>
-      {props.children}
-    </StoreContext.Provider>
-  );
-});
+  return useObserver(() => (
+    <StoreContext.Provider value={store}>{props.children}</StoreContext.Provider>
+  ));
+};
