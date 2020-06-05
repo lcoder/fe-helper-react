@@ -7,19 +7,19 @@ import { useObserver } from "mobx-react";
 const { Option } = Select;
 
 export default () => {
-  const { project: store } = useStore();
+  const { project } = useStore();
 
   return useObserver(() => (
     <div className={style.box}>
       <Select
         className={style.projectName}
         placeholder="请选择项目"
-        value={store.activeProject}
+        value={project.activeProject}
         onChange={active => {
-          store.setActiveProject(active);
+          project.setActiveProject(active);
         }}
       >
-        {store.projects.map(item => {
+        {project.projects.map(item => {
           return (
             <Option value={item.code} key={item.code}>
               {item.name}

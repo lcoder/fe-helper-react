@@ -1,13 +1,13 @@
 import React, { createContext, Props } from "react";
 import { useLocalStore, useObserver } from "mobx-react";
-import { createPrject, TProject } from "./project";
+import { ProjectStore } from "./project";
 
 interface TMixStore {
-  project: TProject;
+  project: ProjectStore;
 }
 
 const initValues = () => ({
-  project: createPrject(),
+  project: new ProjectStore(),
 });
 
 export const StoreContext = createContext<TMixStore | null>(null);
