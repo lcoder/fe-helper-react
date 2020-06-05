@@ -7,7 +7,8 @@ import { useObserver } from "mobx-react";
 const { Option } = Select;
 
 export default () => {
-  const store = useStore();
+  const { project: store } = useStore();
+
   return useObserver(() => (
     <div className={style.box}>
       <Select
