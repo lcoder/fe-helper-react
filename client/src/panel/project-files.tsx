@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Input, Select } from "antd";
 import style from "./project-files.module.less";
-import { StoreContext } from "../store/index";
+import { useStore } from "../store/index";
 import { useObserver } from "mobx-react";
 
 const { Option } = Select;
 
 export default () => {
-  const store = useContext(StoreContext);
+  const store = useStore();
   return useObserver(() => (
     <div className={style.box}>
       <Select
@@ -15,7 +15,7 @@ export default () => {
         placeholder="请选择项目"
         value={store.activeProject}
         onChange={active => {
-          store.changeActiveProject(active);
+          store.setActiveProject(active);
         }}
       >
         {store.projects.map(item => {
