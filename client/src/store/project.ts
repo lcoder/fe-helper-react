@@ -11,6 +11,9 @@ export class ProjectStore {
   activeProject: SelectValue | undefined = undefined;
 
   @observable
+  searchLoading = false;
+
+  @observable
   projects: Array<ProjectItem> = [
     { name: "夸父", code: "kuafu" },
     { name: "诺亚", code: "noah" },
@@ -19,6 +22,11 @@ export class ProjectStore {
   @action
   setActiveProject(newVal?: SelectValue) {
     this.activeProject = newVal;
+  }
+
+  @action
+  setSearchLoading(newVal: boolean) {
+    this.searchLoading = newVal;
   }
 
   @computed

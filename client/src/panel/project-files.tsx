@@ -3,11 +3,13 @@ import { Input, Select } from "antd";
 import style from "./project-files.module.less";
 import { useStore } from "../store/index";
 import { useObserver } from "mobx-react";
+import useFetchDirs from "./use-fetch-dirs";
 
 const { Option } = Select;
 
 export default () => {
   const { project } = useStore();
+  useFetchDirs();
 
   return useObserver(() => (
     <div className={style.box}>
