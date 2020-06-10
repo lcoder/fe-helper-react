@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8002",
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.10.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -49,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@bview/amock": "^0.0.14",
     "husky": ">=4",
     "lint-staged": ">=10",
     "prettier": "2.0.5"
