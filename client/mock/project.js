@@ -1,7 +1,7 @@
 module.exports = {
   "POST /directory": {
     success: true,
-    errorMsg: "处理失败",
+    errorMsg: "处理成功",
     result: {
       dirs: [{ a: 1 }],
     },

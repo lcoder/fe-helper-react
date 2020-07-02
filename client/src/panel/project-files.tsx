@@ -9,8 +9,8 @@ const { Option } = Select;
 
 export default () => {
   const { project } = useStore();
-  useFetchDirs();
-
+  const dirs = useFetchDirs();
+  console.log(222, dirs);
   return useObserver(() => (
     <div className={style.box}>
       <Select

@@ -5,15 +5,16 @@ import { fetchDirs } from "../services/project";
 
 export default function useFetchDirs() {
   const store = useStore();
-  const [result, setResult] = React.useState(null);
+  const [result, setResult] = React.useState([]);
 
   const doFetch = () => {
     const {
-      project: { activeProject },
+      project: { activeProject, projects },
     } = store;
     store.project.setSearchLoading(true);
-    if (activeProject) {
-      fetchDirs(activeProject as string)
+    const target = projects.find(({ code }) => code === activeProject);
+    if (target) {
+      fetchDirs(target.projectPath)
         .then(result => {
           console.log(222, result);
         })

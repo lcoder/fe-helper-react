@@ -19,8 +19,8 @@ axios.interceptors.response.use(
   }
 );
 
-export const fetchDirs = (path: string) => {
-  return axios.post("/directory", {
-    path,
-  });
+interface DirectoryTree {}
+
+export const fetchDirs = (project: string) => {
+  return axios.post<DirectoryTree>("/directory", { project });
 };

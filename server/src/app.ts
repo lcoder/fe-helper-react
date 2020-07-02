@@ -2,17 +2,16 @@ import express from "express";
 import compression from "compression";  // compresses requests
 import bodyParser from "body-parser";
 import path from "path";
-
+import apiRouter from './api';
 
 // Controllers (route handlers)
 import * as homeController from "./controllers/home";
-import * as apiController from "./controllers/api";
 
 // Create Express server
 const app = express();
 
 // Express configuration
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 7001);
 app.set("views", path.join(__dirname, "../views"));
 app.set("view engine", "pug");
 app.use(compression());
@@ -23,14 +22,11 @@ app.use(
     express.static(path.join(__dirname, "public"), { maxAge: 31557600000 })
 );
 
-/**
- * Primary app routes.
- */
 app.get("/", homeController.index);
 
 /**
- * API examples routes.
+ * API 相关
  */
-app.get("/api", apiController.getApi);
+app.use("/api", apiRouter);
 
 export default app;
