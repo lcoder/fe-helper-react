@@ -8,6 +8,13 @@ interface ProjectItem {
   projectPath: string;
 }
 
+interface TreeNode {
+  key: string;
+  title: string;
+  children: TreeNode[] | null;
+  isDir: boolean;
+}
+
 export class ProjectStore {
   @observable
   activeProject: SelectValue | undefined = undefined;
@@ -30,11 +37,43 @@ export class ProjectStore {
     },
   ];
   @observable
-  projectDirTree: Array<DirectoryTree> = [];
+  projectDirTree: TreeNode[] = [];
 
   @action
   setActiveProject(newVal?: SelectValue) {
     this.activeProject = newVal;
+  }
+
+  @observable
+  selectedFiles: string[] = [];
+
+  @action
+  changeSelectedFiles(files: string[]) {
+    this.selectedFiles = files;
+  }
+
+  @action
+  setProjectDir(newVal: DirectoryTree[]) {
+    // 生成tree节点树
+    function traverse(list: DirectoryTree[]) {
+      const result = [];
+      for (let item of list) {
+        const { isDir, name, path, children } = item;
+        if (isDir && children && children.length === 0) {
+          continue;
+        }
+        const newItem: TreeNode = {
+          isDir,
+          key: path,
+          title: name,
+          children: children ? traverse(children) : null,
+        };
+        result.push(newItem);
+      }
+      return result;
+    }
+    const treeList = traverse(newVal);
+    this.projectDirTree = treeList;
   }
 
   @action

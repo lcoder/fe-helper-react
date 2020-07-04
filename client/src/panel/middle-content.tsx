@@ -1,7 +1,10 @@
-import React from 'react'
-
-
+import React from "react";
+import PickedFile from "./components/picked-file";
 
 export default () => {
-    return <div>中间部分</div>
-}
+  return (
+    <div>
+      <PickedFile />
+    </div>
+  );
+};

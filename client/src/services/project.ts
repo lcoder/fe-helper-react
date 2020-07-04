@@ -27,5 +27,5 @@ export interface DirectoryTree {
 }
 
 export const fetchDirs = (project: string) => {
-  return axios.post<Array<DirectoryTree>>("/directory", { project });
+  return axios.post<{ dirTrees: Array<DirectoryTree> }>("/directory", { project });
 };
