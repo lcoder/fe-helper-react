@@ -6,10 +6,10 @@ interface ErrorRes {
   result: null | object | Array<any>,
 }
 
-export function go2Errors(res: Response, errorMsg: string) {
+export function go2Errors(res: Response, errorMsg: string|Error) {
   const errorObj: ErrorRes = {
     success: false,
-    errorMsg,
+    errorMsg: typeof errorMsg === 'string' ? errorMsg : errorMsg.message,
     result: null,
   }
   res.json(errorObj);
