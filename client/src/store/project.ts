@@ -1,5 +1,6 @@
 import { SelectValue } from "antd/es/select";
 import { observable, action, computed } from "mobx";
+import { DirectoryTree } from "../services/project";
 
 interface ProjectItem {
   name: string;
@@ -28,6 +29,8 @@ export class ProjectStore {
       projectPath: "/Users/maotingfeng/netease/noah/client",
     },
   ];
+  @observable
+  projectDirTree: Array<DirectoryTree> = [];
 
   @action
   setActiveProject(newVal?: SelectValue) {

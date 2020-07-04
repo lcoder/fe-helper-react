@@ -16,7 +16,7 @@ export default function useFetchDirs() {
     if (target) {
       fetchDirs(target.projectPath)
         .then(result => {
-          console.log(222, result);
+          store.project.projectDirTree = result;
         })
         .finally(() => {
           store.project.setSearchLoading(false);
