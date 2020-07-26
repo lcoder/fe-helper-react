@@ -1,4 +1,4 @@
-const content = require("../feHelper_config.json");
+const content = require("../../feHelper_config.json");
 
 module.exports = {
   ...content,
