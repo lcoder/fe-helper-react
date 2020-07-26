@@ -1,5 +1,7 @@
 ### Fe-Heler-React 版
 
+![演示图片](./docs/demo.gif)
+
 ### 配置 store 仓库地址
 
 新建`node/feHelper_config.json`配置文件。
