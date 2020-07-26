@@ -4,7 +4,7 @@
 
 ### 配置 store 仓库地址
 
-新建`node/feHelper_config.json`配置文件。
+项目根目录下`feHelper_config.json`配置文件。
 
 配置如下:
 
