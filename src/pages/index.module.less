@@ -1,0 +1,39 @@
+@headerHeight: 50px;
+@footerHeight: 70px;
+
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 8px 24px 0 0;
+  float: left;
+}
+
+:global {
+  .ant-layout-header {
+    height: @headerHeight;
+    line-height: @headerHeight;
+  }
+}
+
+.content {
+  padding: 0 20px;
+  height: calc(100vh - @headerHeight - @footerHeight);
+}
+
+.footer {
+  text-align: center;
+}
+
+.mainContainer {
+  box-sizing: border-box;
+  padding: 20px 0;
+  height: 100%;
+  > .middle-area {
+    flex: 1;
+    margin: 0 20px;
+  }
+}
+.fileList {
+  height: 100%;
+}

@@ -1,0 +1,39 @@
+.category {
+  .title {
+    color: #fff;
+    background-color: gray;
+    text-align: center;
+  }
+  .catebox {
+    display: flex;
+    padding: 10px;
+    > div {
+      margin-right: 10px;
+    }
+  }
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+.cateItem {
+  display: inline-flex;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  width: 100px;
+  height: 100px;
+  flex-direction: column;
+  .previewImg {
+    flex: 1;
+    img {
+      width: 100%;
+      max-height: 100px;
+    }
+  }
+  .cName {
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
